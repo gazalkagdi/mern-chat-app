@@ -10,7 +10,9 @@ const io = new Server(server, {
   cors: {
     origin: ["https://mern-chat-app-peach-kappa.vercel.app"],
     methods: ["GET", "POST", "PUT"],
+    transports: ["websocket", "polling"],
   },
+  allowEIO3: true,
 });
 
 export const getReceiverSocketId = (receiverId) => {
