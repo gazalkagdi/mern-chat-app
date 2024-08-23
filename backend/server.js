@@ -28,6 +28,6 @@ app.use("/api/users", userRoutes);
 app.use(express.static(path.join(__dirname, "/chat-app/dist")));
 
 server.listen(PORT, () => {
-  // connectToMongoDB();
+  connectToMongoDB();
   console.log(`Server Running on port ${PORT}`);
 });
