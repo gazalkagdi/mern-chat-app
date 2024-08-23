@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.js";
 import messageRoutes from "./routes/message.js";
 import userRoutes from "./routes/user.js";
+import cors from "cors";
 
 import connectToMongoDB from "./db/connection.js";
 import { app, server } from "./socket/socket.js";
@@ -17,6 +18,17 @@ const __dirname = path.resolve();
 const PORT = 5000;
 
 app.get("/", (req, res) => res.send("Hello world"));
+
+app.use(
+  cors({
+    credentials: true,
+    origin: [
+      "http://localhost:3000",
+      "https://mern-chat-app-peach-kappa.vercel.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
