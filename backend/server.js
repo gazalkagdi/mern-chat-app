@@ -38,8 +38,8 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
 app.use(express.static(path.join(__dirname, "/chat-app/dist")));
+connectToMongoDB();
 
 server.listen(PORT, () => {
-  connectToMongoDB();
   console.log(`Server Running on port ${PORT}`);
 });
