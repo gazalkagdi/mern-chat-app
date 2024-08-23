@@ -14,7 +14,7 @@ dotenv.config();
 
 const __dirname = path.resolve();
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 app.get("/", (req, res) => res.send("Hello world"));
 
@@ -25,7 +25,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.use(express.static(path.join(__dirname, "/chat-app/dist")));
 
 server.listen(PORT, () => {
   connectToMongoDB();
