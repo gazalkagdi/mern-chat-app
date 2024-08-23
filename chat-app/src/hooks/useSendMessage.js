@@ -5,12 +5,13 @@ import toast from "react-hot-toast";
 const useSendMessage = () => {
   const [loading, setLoading] = useState(false);
   const { messages, setMessages, selectedConversation } = useConversation();
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const sendMessage = async (message) => {
     setLoading(true);
     try {
       const res = await fetch(
-        `/api/messages/send/${selectedConversation._id}`,
+        `${apiBaseUrl}/messages/send/${selectedConversation._id}`,
         {
           method: "POST",
           headers: {

@@ -7,8 +7,8 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
+    origin: ["https://mern-chat-app-tan.vercel.app"],
+    methods: ["GET", "POST", "PUT"],
   },
 });
 
