@@ -1,3 +1,5 @@
+<img width="1280" alt="Screenshot 2024-08-24 at 3 44 32 PM" src="https://github.com/user-attachments/assets/73ac1828-0c7f-47ab-b9e5-ad64244bfaca">
+
 MERN Chat App
 
 Description:
