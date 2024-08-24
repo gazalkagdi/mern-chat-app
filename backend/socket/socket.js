@@ -10,6 +10,7 @@ const io = new Server(server, {
   cors: {
     origin: ["https://mern-chat-app-peach-kappa.vercel.app"],
     methods: ["GET", "POST", "PUT"],
+    transports: ["websocket"],
   },
   allowEIO3: true,
 });
