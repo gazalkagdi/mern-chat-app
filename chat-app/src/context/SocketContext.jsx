@@ -15,12 +15,16 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://mern-chat-app-tan.vercel.app", {
-        query: {
-          userId: authUser._id,
+      const socket = io(
+        import.meta.env.MODE === "development"
+          ? "http://localhost:5000"
+          : "https://mern-chat-app-gzl.onrender.com",
+        {
+          query: {
+            userId: authUser._id,
+          },
         },
-        transports: ["websocket"],
-      });
+      );
 
       setSocket(socket);
 

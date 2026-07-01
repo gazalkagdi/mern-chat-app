@@ -21,13 +21,12 @@ app.get("/", (req, res) => res.send("Hello world"));
 
 app.use(
   cors({
-    credentials: true,
     origin: [
       "http://localhost:3000",
       "https://mern-chat-app-peach-kappa.vercel.app",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
+    credentials: true,
+  }),
 );
 
 app.use(express.json());

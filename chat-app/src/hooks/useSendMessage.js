@@ -5,7 +5,13 @@ import axios from "axios";
 
 const useSendMessage = () => {
   const [loading, setLoading] = useState(false);
-  const { messages, setMessages, selectedConversation } = useConversation();
+  const {
+    messages,
+    setMessages,
+    selectedConversation,
+    setConversations,
+    conversations,
+  } = useConversation();
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const sendMessage = async (message) => {
@@ -18,13 +24,21 @@ const useSendMessage = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       const data = response.data;
       if (data.error) throw new Error(data.error);
 
       setMessages([...messages, data]);
+
+      // Move the active conversation to the top
+      if (conversations) {
+        const filteredConversations = conversations.filter(
+          (c) => c._id !== selectedConversation._id,
+        );
+        setConversations([selectedConversation, ...filteredConversations]);
+      }
     } catch (error) {
       toast.error(error.message);
     } finally {

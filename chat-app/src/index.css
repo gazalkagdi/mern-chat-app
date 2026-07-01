@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("/bg.jpg");
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -56,5 +56,32 @@ body {
   40%,
   60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+.animate-in {
+  animation: animate-in 0.3s ease-out;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes animate-in {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -3,23 +3,19 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import useConversation from "../zustand/useConversation";
 
-const useGetConversations = () => {
+const useGetUnreadMessages = () => {
   const [loading, setLoading] = useState(false);
-  const { conversations, setConversations } = useConversation();
+  const { setUnreadConversations } = useConversation();
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
-    const getConversations = async () => {
+    const getUnreadMessages = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`${apiBaseUrl}/users`);
+        const response = await axios.get(`${apiBaseUrl}/messages/unread`);
         const data = response.data;
-
-        if (data.error) {
-          throw new Error(data.error);
-        }
-
-        setConversations(data);
+        if (data.error) throw new Error(data.error);
+        setUnreadConversations(data);
       } catch (error) {
         toast.error(error.message);
       } finally {
@@ -27,9 +23,10 @@ const useGetConversations = () => {
       }
     };
 
-    getConversations();
-  }, [setConversations, apiBaseUrl]);
+    getUnreadMessages();
+  }, [setUnreadConversations, apiBaseUrl]);
 
-  return { loading, conversations };
+  return { loading };
 };
-export default useGetConversations;
+
+export default useGetUnreadMessages;

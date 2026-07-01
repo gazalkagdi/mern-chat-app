@@ -13,7 +13,7 @@ const useGetMessages = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${apiBaseUrl}/messages/${selectedConversation._id}`
+          `${apiBaseUrl}/messages/${selectedConversation._id || selectedConversation.id}`,
         );
         const data = response.data;
 
